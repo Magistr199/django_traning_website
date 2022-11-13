@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import first_page
+# импортируем модуль 'views' этого проекта
+from crm import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', first_page),
+    # прописываем путь на главную
+    path('', views.first_page),
+    # Добавляем нашу страницу в урлы
+    # 1 - наименование пути в браузэре
+    # 2 - путь к нашему методу отображения страницы
+    # 3 - наименование параметра который будем передавать в хтмл страницу
+    path('thanks/', views.thanks_page, name = 'thanks_page'),
+
 ]
